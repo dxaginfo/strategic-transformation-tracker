@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Transformation Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-bar-chart-line me-2"></i>
+                Strategic Transformation Tracker
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#assessment">Assessment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#roi-calculator">ROI Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Welcome to Your Transformation Journey</h2>
+                        <p class="card-text">Track, measure, and accelerate your organization's evolution from product to platform strategy.</p>
+                        <button id="start-assessment-btn" class="btn btn-primary">Start Your Assessment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h3>Transformation Dashboard</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Progress Overview Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h5>Your Transformation Progress</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="transformation-radar-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Benchmark Comparison Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light">
+                                        <h5>Industry Benchmark Comparison</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="benchmark-bar-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Transformation Timeline Card -->
+                            <div class="col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h5>Transformation Timeline</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="timeline-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Section -->
+        <div id="assessment" class="row mb-4 d-none">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h3>Platform Readiness Assessment</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="assessment-wizard">
+                            <!-- Step indicators -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="progress" style="height: 30px;">
+                                        <div id="assessment-progress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Assessment Steps -->
+                            <div id="assessment-step-1" class="assessment-step">
+                                <h4>Step 1: Strategic Intent</h4>
+                                <p class="mb-4">Evaluate your organization's strategic vision and goals for platform transformation.</p>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">1. How clearly defined is your platform strategy?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="strategic-clarity">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Not defined</span>
+                                            <span>Fully defined</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">2. To what extent is your leadership aligned on platform transformation?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="leadership-alignment">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Not aligned</span>
+                                            <span>Fully aligned</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">3. How mature is your roadmap for platform transition?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="roadmap-maturity">
+                                        <div class="d-flex justify-content-between">
+                                            <span>No roadmap</span>
+                                            <span>Detailed roadmap</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end mt-4">
+                                    <button id="step-1-next" class="btn btn-primary">Next Step</button>
+                                </div>
+                            </div>
+                            
+                            <div id="assessment-step-2" class="assessment-step d-none">
+                                <h4>Step 2: Technical Capabilities</h4>
+                                <p class="mb-4">Assess your organization's technical infrastructure and capabilities for platform implementation.</p>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">1. How modular and API-ready is your current technology architecture?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="architecture-readiness">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Not modular</span>
+                                            <span>Fully modular</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">2. To what extent can your infrastructure scale to support platform growth?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="scalability">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Limited scalability</span>
+                                            <span>Highly scalable</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">3. How advanced are your data capabilities for platform insights?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="data-capabilities">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Basic</span>
+                                            <span>Advanced</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end mt-4">
+                                    <button id="step-2-prev" class="btn btn-secondary me-2">Previous</button>
+                                    <button id="step-2-next" class="btn btn-primary">Next Step</button>
+                                </div>
+                            </div>
+                            
+                            <div id="assessment-step-3" class="assessment-step d-none">
+                                <h4>Step 3: Ecosystem Readiness</h4>
+                                <p class="mb-4">Evaluate your organization's ability to build and nurture a platform ecosystem.</p>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">1. How well-defined is your ecosystem partner strategy?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="partner-strategy">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Not defined</span>
+                                            <span>Well defined</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">2. How mature are your partner onboarding and management processes?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="partner-processes">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Not developed</span>
+                                            <span>Highly developed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">3. How attractive is your value proposition to potential ecosystem partners?</label>
+                                    <div class="range-container">
+                                        <input type="range" class="form-range" min="1" max="10" id="value-proposition">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Limited appeal</span>
+                                            <span>Highly attractive</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end mt-4">
+                                    <button id="step-3-prev" class="btn btn-secondary me-2">Previous</button>
+                                    <button id="assessment-submit" class="btn btn-success">Submit Assessment</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Results Section (initially hidden) -->
+                            <div id="assessment-results" class="d-none">
+                                <h4 class="mb-4">Your Platform Readiness Results</h4>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card mb-4">
+                                            <div class="card-header bg-light">
+                                                <h5>Overall Readiness Score</h5>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <div class="display-1 fw-bold text-primary mb-3">
+                                                    <span id="overall-score">0</span>/10
+                                                </div>
+                                                <p id="score-description" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="card mb-4">
+                                            <div class="card-header bg-light">
+                                                <h5>Dimension Breakdown</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <canvas id="dimension-chart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4">
+                                    <div class="card-header bg-light">
+                                        <h5>Key Recommendations</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul id="recommendations-list" class="list-group list-group-flush">
+                                            <!-- Recommendations will be added here dynamically -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end mt-4">
+                                    <button id="view-dashboard-btn" class="btn btn-primary">View Your Dashboard</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-4 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Strategic Transformation Tracker | <a href="https://github.com/dxaginfo/strategic-transformation-tracker" target="_blank">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/assessment.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
